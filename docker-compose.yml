@@ -268,7 +268,14 @@ services:
       - 5601:5601
     environment:
       discovery.type: "single-node"
-      ELASTICSEARCH_URL: http://elasticsearch:9200
+
+  kibana-remote:
+    image: docker.elastic.co/kibana/kibana:7.17.8
+    container_name: kibana-remote
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_HOSTS: http://10.0.103.105:9200
 
   kafkacat:
     image: edenhill/kafkacat:1.7.0-PRE1
